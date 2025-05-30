@@ -3,6 +3,7 @@
 
 # Ignore data directory
 data/
+pynance/
 
 # Ignore common data and notebook checkpoint files
 *.csv
