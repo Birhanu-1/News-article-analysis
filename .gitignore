@@ -3,7 +3,7 @@ venv/
 
 # Ignore data directory
 data/
-pynance/
+pynance/*
 
 # Ignore common data and notebook checkpoint files
 *.csv
