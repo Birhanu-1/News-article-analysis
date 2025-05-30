@@ -1,47 +1,10 @@
-
+# Ignore large raw data files
+data/raw_analyst_ratings/raw_analyst_ratings.csv
 
 # Jupyter Notebook checkpoints
 .ipynb_checkpoints/
 
 # Python cache and virtual environments
-__pycache__/
-*.py[cod]
-*.so
-*.pyd
-*.egg
-*.egg-info/
-dist/
-build/
-.env
-.venv/
-venv/
-ENV/
-
-# Data files
-*.csv
-*.xlsx
-*.xls
-*.parquet
-*.h5
-
-# TA-Lib build files (if compiled locally)
-*.dll
-*.dylib
-*.lib
-*.a
-*.o
-
-# VSCode and system files
-.vscode/
-.DS_Store
-
-# Logs
-*.log
-# Jupyter Notebook checkpoints
-.ipynb_checkpoints/
-
-# Python cache and virtual environments
-data/
 __pycache__/
 *.py[cod]
 *.so
