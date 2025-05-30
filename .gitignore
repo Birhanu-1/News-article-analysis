@@ -90,6 +90,7 @@ build/
 .venv/
 venv/
 ENV/
+data/
 
 # Data files
 *.csv
