@@ -91,7 +91,10 @@ Edit
 
 ## 📊 Sample Output
 
-![Sentiment vs Return](outputs/sentiment_vs_return.png)
+![image](https://github.com/user-attachments/assets/443ca0a2-bc12-4d97-bcc8-f36764b1757f)
+
+
+![image](https://github.com/user-attachments/assets/bbfff7d3-decc-4016-8da6-3b39a901806d)
 
 ---
 
