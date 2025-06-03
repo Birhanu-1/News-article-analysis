@@ -1,102 +1,164 @@
-📈 News Sentiment Analysis and Correlation with Stock Prices
-This project analyzes financial news headlines from analyst ratings and correlates the sentiment with stock price movements. It combines qualitative textual data (news headlines) and quantitative financial metrics (stock prices) for exploratory and statistical analysis.
+# 📈 Predicting Price Moves with News Sentiment
 
-🗂️ Project Structure
-bash
-Copy
-Edit
-.
+This notebook-based project explores how news sentiment influences stock price movement by combining Natural Language Processing (NLP) with financial time series analysis. It is divided into three main tasks that analyze textual news data and financial market data to identify potential predictive patterns.
+
+---
+
+## 🧠 Project Objective
+
+To quantify the impact of news sentiment on stock price movements by:
+- Extracting sentiment scores from news headlines
+- Performing technical analysis on stock price data
+- Correlating sentiment with daily stock returns
+
+---
+
+## 📁 Project Structure
+
+News-article-analysis/
+│
 ├── data/
-│   ├── raw_analyst_ratings.csv         # Raw dataset with news headlines and analyst ratings
-│   └── stock_data/                     # Folder with pre-downloaded yfinance data (e.g., AAPL.csv)
-├── scripts/
-│   ├── eda.py                          # Functions for descriptive stats and topic modeling
-│   ├── sentiment.py                    # Sentiment analysis using VADER
-│   └── correlation.py                  # Sentiment-stock price correlation analysis
-├── main.py                             # Main script to execute full pipeline
-└── README.md                           # Project documentation
-📌 Objective
-Analyze textual news data for trends and topic patterns.
+│ ├── raw_analyst_data.csv # Raw news headlines
+│ └── yfinance/ # Historical stock price data
+│
+├── outputs/
+│ ├── daily_sentiment.csv # Daily sentiment scores
+│ ├── price_with_indicators.csv # Financial indicators + returns
+│ └── sentiment_vs_return.png # Correlation plot
+│
+├── notebooks/
+│ ├── Task_1_Sentiment_Analysis.ipynb
+│ ├── Task_2_Technical_Analysis.ipynb
+│ └── Task_3_Correlation_Analysis.ipynb
+│
+├── .github/workflows/ # GitHub Actions for CI (optional)
+└── README.md
 
-Perform sentiment analysis using VADER (from NLTK).
-
-Download and process historical stock prices (or load from local CSV).
-
-Merge both datasets on date and stock to perform correlation analysis.
-
-Visualize insights (time series, word clouds, bar charts, heatmaps).
-
-⚙️ Requirements
-bash
+markdown
 Copy
 Edit
-pip install pandas numpy matplotlib seaborn scikit-learn nltk wordcloud yfinance
-Also, download the VADER lexicon:
 
-python
-Copy
-Edit
-import nltk
-nltk.download('vader_lexicon')
-📥 Data Sources
-Analyst Ratings Dataset: CSV containing columns like headline, publisher, date, stock.
+---
 
-Stock Data: Loaded from Yahoo Finance via yfinance or from local files.
+## ✅ Tasks Overview
 
-🚀 How to Run
+### 🔹 Task 1: Sentiment Analysis of News Headlines
+
+**Notebook**: `Task_1_Sentiment_Analysis.ipynb`
+
+- **Objective**: Convert financial news headlines into sentiment scores.
+- **Steps**:
+  - Load and clean `raw_analyst_data.csv`
+  - Apply `TextBlob` to compute sentiment polarity
+  - Aggregate daily sentiment by stock symbol
+  - Save results as `outputs/daily_sentiment.csv`
+
+- **Libraries Used**: `pandas`, `TextBlob`, `nltk`
+
+---
+
+### 🔹 Task 2: Quantitative Analysis Using TA-Lib and PyNance
+
+**Notebook**: `Task_2_Technical_Analysis.ipynb`
+
+- **Objective**: Use financial indicators to analyze stock movement.
+- **Steps**:
+  - Load OHLCV stock data from `data/yfinance/`
+  - Calculate:
+    - Simple Moving Average (SMA)
+    - Relative Strength Index (RSI)
+    - Moving Average Convergence Divergence (MACD)
+    - Daily returns
+  - Save results as `outputs/price_with_indicators.csv`
+
+- **Libraries Used**: `TA-Lib`, `PyNance`, `pandas`, `matplotlib`
+
+---
+
+### 🔹 Task 3: Correlation Between News and Stock Movement
+
+**Notebook**: `Task_3_Correlation_Analysis.ipynb`
+
+- **Objective**: Examine the relationship between sentiment and returns.
+- **Steps**:
+  - Merge sentiment and stock return data by date
+  - Compute correlation (e.g., Pearson)
+  - Visualize relationship using scatter plots
+
+- **Libraries Used**: `pandas`, `seaborn`, `matplotlib`, `scipy`
+
+---
+
+## 📊 Sample Output
+
+![Sentiment vs Return](outputs/sentiment_vs_return.png)
+
+---
+
+## 🚀 How to Run the Project
+
 1. Clone this repo:
+   ```bash
+   git clone https://github.com/Birhanu-1/News-article-analysis.git
+   cd News-article-analysis
+Install the requirements:
+
 bash
 Copy
 Edit
-git clone https://github.com/your_username/financial-news-sentiment.git
-cd financial-news-sentiment
-2. Run the analysis pipeline:
+pip install -r requirements.txt
+Launch the notebooks:
+
 bash
 Copy
 Edit
-python main.py
-🔍 Functionality Overview
-🧾 Descriptive Statistics & EDA
-Word frequency, headline length
+jupyter notebook notebooks/
+Open and run each of the following:
 
-Articles per publisher and hour
+Task_1_Sentiment_Analysis.ipynb
 
-Topic modeling using LDA
+Task_2_Technical_Analysis.ipynb
 
-Daily publication trends
+Task_3_Correlation_Analysis.ipynb
 
-💬 Sentiment Analysis
-VADER sentiment scoring per headline
+📌 Requirements
+Python 3.8+
 
-Categorization into positive, negative, or neutral
+Jupyter Notebook
 
-📈 Stock Data Integration
-Daily price aggregation from yfinance or CSV
+pandas, matplotlib, seaborn, TextBlob, nltk
 
-Merge with news sentiment by date and stock
+TA-Lib (may require C dependencies)
 
-🔄 Correlation Analysis
-Compute Pearson correlation between:
+PyNance
 
-Daily average sentiment score
+yfinance
 
-Daily closing stock prices
+🧪 Evaluation Context
+This project was developed for 10 Academy - Week 1 as part of the assignment:
 
-Dual-axis plots to visualize sentiment vs. price trends
+B5W1: Predicting Price Moves with News Sentiment – Final Submission
 
-📊 Example Output
-📉 Time series plot of sentiment vs. stock price
+👤 Author
+Birhanu Berihun
 
-☁️ Word clouds of common headline terms
+📄 License
+MIT License – see LICENSE for details.
 
-🔥 Heatmap of publisher activity by weekday
+yaml
+Copy
+Edit
 
-📘 Bar charts of frequent terms per publisher
+---
 
-🛠️ Improvements Underway
-✅ Your code showcases clear progress in intermediate functionalities, including loading datasets, calculating technical indicators using TA-Lib, and performing financial metric calculations.
-⚠️ However, there is no evidence of actual sentiment analysis or correlation analysis between news sentiment and stock price movements, which are core tasks of the project.
-💡 Improvements: Include sentiment scoring and correlation insights as implemented in this version.
+Let me know if you'd like me to also generate:
+- A `requirements.txt` file
+- A blog-style Medium post based on the final notebook
+- An automated `notebook_runner.py` to run all tasks end-to-end
 
-🧱 Your repository shows the presence of organized notebooks dedicated to different stocks with modular functions for loading data, computing indicators, and plotting results.
-📌 Suggestion: Improve separation between sentiment analysis and technical indicator computations for better modularity and maintainability.
+
+
+
+
+
+
