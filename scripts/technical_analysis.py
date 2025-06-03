@@ -1,10 +1,16 @@
 import pandas as pd
-import talib
+import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-from pynance import equity
+import re
+import os
+import talib
+import pynance 
+import yfinance as
+
 
 sns.set(style='darkgrid')
+
 
 class TechnicalAnalyzer:
     def __init__(self, price_csv):
@@ -52,12 +58,17 @@ class TechnicalAnalyzer:
         plt.tight_layout()
         plt.show()
     
+
+
     def save(self, output_path='outputs/price_with_indicators.csv'):
+
         self.df.to_csv(output_path)
 
 
 if __name__ == "__main__":
-    analyzer = TechnicalAnalyzer('data/yfinance/TSLA.csv')
+
+    analyzer = TechnicalAnalyzer('../data/yfinance_data/AAPL_historical_data.csv')
+
     analyzer.add_indicators()
     analyzer.add_returns()
     analyzer.fetch_pynance_data()
@@ -68,4 +79,4 @@ if __name__ == "__main__":
     print("\nPlotting indicators...")
     analyzer.plot_price_and_indicators()
     analyzer.plot_rsi()
-    analyzer.plot_macd()
+
