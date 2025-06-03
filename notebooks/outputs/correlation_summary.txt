@@ -1,0 +1,2 @@
+Pearson Correlation between sentiment and daily return: -0.0010
+P-value: 0.9624
